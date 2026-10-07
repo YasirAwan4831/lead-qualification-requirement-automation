@@ -1,0 +1,1091 @@
+[
+ {
+  "type": "h1",
+  "text": "1. Executive Summary",
+  "page": 3
+ },
+ {
+  "type": "p",
+  "text": "IT and digital services companies receive a steady flow of project inquiries. Most arrive as short, informal messages, such as \"I need an e-commerce website for my clothing business.\" Before a sales or project team can respond usefully, someone must work out which service is needed, collect missing requirements, judge how serious the inquiry is, record the details, and follow up. This work is repetitive and easy to delay.",
+  "page": 3
+ },
+ {
+  "type": "p",
+  "text": "This document proposes an AI Lead Qualification & Project Requirement Automation for Star Developer, the sample IT and digital services business selected for this exercise. The proposed solution reads each inquiry, identifies the requested service, extracts the available details, asks for what is missing, classifies the inquiry, prepares a structured lead record, and notifies the right team. People remain responsible for pricing, negotiation, and every complex or sensitive decision.",
+  "page": 3
+ },
+ {
+  "type": "h3",
+  "text": "Solution Design Notice",
+  "page": 3
+ },
+ {
+  "type": "p",
+  "text": "This is a proposed solution design. Nothing described here has been built or deployed. No APIs, WhatsApp channels, n8n workflows, spreadsheets, or CRM systems are connected, and no real customer data or performance results are used. The sample customer in Section 11 is fictional.",
+  "page": 3
+ },
+ {
+  "type": "h1",
+  "text": "2. Business Overview",
+  "page": 3
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Business Name",
+    "Star Developer"
+   ],
+   [
+    "Business Type",
+    "IT Company / Digital Services Company"
+   ],
+   [
+    "Main Services",
+    "Website Development, Web Application Development, Mobile Application Development, AI Solutions, AI Automation, Digital Marketing, Graphic Design, Custom Software Solutions, and IT Solutions."
+   ],
+   [
+    "Target Customers",
+    "Businesses, startups, organizations, individuals who need digital products, companies that need software solutions, and businesses interested in automation."
+   ],
+   [
+    "Role in This Document",
+    "Star Developer is the sample business selected for this practical internship exercise. No claim is made about its real internal operations, staff, customers, or systems."
+   ]
+  ],
+  "page": 3
+ },
+ {
+  "type": "h1",
+  "text": "3. Business Process Analysis",
+  "page": 3
+ },
+ {
+  "type": "p",
+  "text": "The table shows how a typical project inquiry could be handled manually in a company of this kind. It is an illustrative process used to find automation opportunities, not a record of Star Developer's actual workflow.",
+  "page": 3
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Step",
+    "Manual Activity",
+    "Where Time or Quality Is Lost"
+   ],
+   [
+    "1. Read and identify",
+    "Read each message and decide which service is needed.",
+    "Messages wait until someone is free; vague wording needs interpretation."
+   ],
+   [
+    "2. Ask and collect",
+    "Write clarifying questions and gather the answers.",
+    "The same questions are typed repeatedly; details are scattered in long chats."
+   ],
+   [
+    "3. Judge lead quality",
+    "Decide if the person is a serious potential customer.",
+    "Judgment can differ between people."
+   ],
+   [
+    "4. Record and forward",
+    "Copy details into a sheet or CRM and inform the team.",
+    "Manual data entry, possible errors, and delayed handover."
+   ],
+   [
+    "5. Follow up",
+    "Remember to contact the lead later.",
+    "Missed or late follow-ups."
+   ]
+  ],
+  "page": 3
+ },
+ {
+  "type": "h1",
+  "text": "4. Identified Business Problem",
+  "page": 4
+ },
+ {
+  "type": "h3",
+  "text": "Selected problem: AI-Powered Lead Qualification & Project Requirement Collection.",
+  "page": 4
+ },
+ {
+  "type": "p",
+  "text": "An initial inquiry such as \"I need an e-commerce website for my clothing business\" tells the team what the customer wants, but not the details needed to plan the work: the number of products, payment methods, delivery needs, existing domain or hosting, and extra features. Collecting these details by hand for every inquiry is repetitive, and the cost grows with the number of inquiries.",
+  "page": 4
+ },
+ {
+  "type": "h3",
+  "text": "Scenario, Not a Verified Fact",
+  "page": 4
+ },
+ {
+  "type": "p",
+  "text": "The problem is presented as a realistic business-process scenario for designing a solution. It is not a claim that Star Developer currently faces these problems or has any existing automation.",
+  "page": 4
+ },
+ {
+  "type": "h1",
+  "text": "5. Why the Problem Needs Automation",
+  "page": 4
+ },
+ {
+  "type": "p",
+  "text": "Customer messages are written in natural language, and every customer words things differently. Fixed-rule automation struggles with this. AI can read varied messages, identify the service, extract details, and write suitable follow-up questions, which makes it a strong fit for this process.",
+  "page": 4
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Factor",
+    "Why It Suits Automation"
+   ],
+   [
+    "Repetitive inquiries",
+    "Many inquiries ask about the same few services."
+   ],
+   [
+    "Similar questions",
+    "The same clarifying questions are needed for each service type."
+   ],
+   [
+    "Repeated requirement collection",
+    "Collecting requirements follows a predictable pattern."
+   ],
+   [
+    "Manual data entry",
+    "Details are retyped into sheets or a CRM."
+   ],
+   [
+    "Lead qualification",
+    "Clear signals of intent can be recognized consistently."
+   ],
+   [
+    "Information extraction",
+    "Names, services, and features can be pulled out of free text."
+   ],
+   [
+    "Follow-up management",
+    "Reminders and notifications are easy to forget by hand."
+   ],
+   [
+    "Staff time on initial tasks",
+    "Employees spend time on first steps instead of project discussions."
+   ],
+   [
+    "Inconsistent handling",
+    "A standard workflow gives every inquiry the same treatment."
+   ],
+   [
+    "Delayed responses",
+    "Automation can send an acknowledgement and questions immediately."
+   ]
+  ],
+  "page": 4
+ },
+ {
+  "type": "h1",
+  "text": "6. Proposed AI Automation Solution",
+  "page": 4
+ },
+ {
+  "type": "p",
+  "text": "Proposed name: AI Lead Qualification & Project Requirement Automation. From a business perspective, the solution acts as a first-line assistant that prepares every inquiry for a human team. Conceptually, it would perform twelve functions:",
+  "page": 4
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "#",
+    "Function",
+    "#",
+    "Function"
+   ],
+   [
+    "1",
+    "Receive a customer inquiry",
+    "7",
+    "Classify the inquiry"
+   ],
+   [
+    "2",
+    "Read and understand the message",
+    "8",
+    "Determine potential lead status"
+   ],
+   [
+    "3",
+    "Identify the requested service",
+    "9",
+    "Create a structured lead record"
+   ],
+   [
+    "4",
+    "Extract available project information",
+    "10",
+    "Prepare information for the right team"
+   ],
+   [
+    "5",
+    "Identify missing information",
+    "11",
+    "Recommend human follow-up when necessary"
+   ],
+   [
+    "6",
+    "Ask relevant follow-up questions",
+    "12",
+    "Keep a clear record of the inquiry"
+   ]
+  ],
+  "page": 4
+ },
+ {
+  "type": "p",
+  "text": "This is a designed solution. It is not a deployed system.",
+  "page": 4
+ },
+ {
+  "type": "h1",
+  "text": "7. Customer Journey",
+  "page": 5
+ },
+ {
+  "type": "p",
+  "text": "The proposed journey from the customer's point of view is shown below. Every stage is described in plain language.",
+  "page": 5
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Stage",
+    "What Happens"
+   ],
+   [
+    "1. Customer submits inquiry",
+    "The customer sends a message through WhatsApp or website chat."
+   ],
+   [
+    "2. AI receives message",
+    "The automation passes the message to the AI."
+   ],
+   [
+    "3. AI understands request",
+    "The AI works out what the customer is asking for."
+   ],
+   [
+    "4. Service identified",
+    "The AI decides which Star Developer service is needed."
+   ],
+   [
+    "5. Requirements extracted",
+    "Details already given, such as business type and features, are captured."
+   ],
+   [
+    "6. Missing information found",
+    "The AI compares what it has with what the team needs."
+   ],
+   [
+    "7. Follow-up questions asked",
+    "The AI sends short, clear questions for the missing details."
+   ],
+   [
+    "8. Lead qualified",
+    "The AI judges how likely it is that the inquiry is a real project."
+   ],
+   [
+    "9. Lead record prepared",
+    "The details are organized into a structured record."
+   ],
+   [
+    "10. Team notified",
+    "Sales or the project team receives a summary."
+   ],
+   [
+    "11. Human follow-up",
+    "A team member contacts the customer."
+   ],
+   [
+    "12. Project discussion",
+    "The customer and team discuss scope, pricing, and next steps."
+   ]
+  ],
+  "page": 5
+ },
+ {
+  "type": "h1",
+  "text": "8. Automation Workflow",
+  "page": 5
+ },
+ {
+  "type": "p",
+  "text": "The workflow follows the required structure: Customer/Input → AI Processing → Automation → Action → Final",
+  "page": 5
+ },
+ {
+  "type": "h3",
+  "text": "Result.",
+  "page": 5
+ },
+ {
+  "type": "p",
+  "text": "Customer / Input → AI Processing → Automation → Action → Final Result",
+  "page": 5
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Stage",
+    "Proposed Behavior"
+   ],
+   [
+    "Customer / Input",
+    "The customer sends a project inquiry."
+   ],
+   [
+    "AI Processing",
+    "The AI reads the inquiry and identifies the service needed (website, web application, mobile application, AI solution, AI automation, digital marketing, or another IT service). It extracts the customer name, business type, project type, main requirements, expected features, and contact information if voluntarily provided. It then detects what is missing and writes suitable follow-up questions."
+   ],
+   [
+    "Lead Qualification",
+    "The inquiry is classified as General, Service, Potential Lead, Complex, or Human Escalation Required."
+   ],
+   [
+    "Automation",
+    "Structured information is prepared for storage in Google Sheets, a CRM, or a lead database, depending on the final implementation choice."
+   ],
+   [
+    "Action",
+    "The sales or project team receives the relevant lead information."
+   ],
+   [
+    "Final Result",
+    "The human team follows up with an organized, better-qualified potential customer."
+   ]
+  ],
+  "page": 5
+ },
+ {
+  "type": "h1",
+  "text": "9. Workflow Diagram",
+  "page": 6
+ },
+ {
+  "type": "p",
+  "text": "The diagram shows the proposed flow, including the missing-information decision and the escalation route for complex or uncertain cases.",
+  "page": 6
+ },
+ {
+  "type": "h1",
+  "text": "10. AI Decision & Lead Qualification Logic",
+  "page": 7
+ },
+ {
+  "type": "p",
+  "text": "The AI would sort each inquiry into one of four categories. The category decides what the automation does next.",
+  "page": 7
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Category",
+    "When It Applies",
+    "Proposed Action"
+   ],
+   [
+    "1. General Inquiry",
+    "The customer asks a basic question.",
+    "The AI provides suitable information from approved business details."
+   ],
+   [
+    "2. Service Inquiry",
+    "The customer is interested in a service.",
+    "The AI collects initial requirements and asks follow-up questions."
+   ],
+   [
+    "3. Potential Lead",
+    "The customer shows clear project intent.",
+    "The AI prepares a lead record and recommends human follow-up."
+   ],
+   [
+    "4. Complex / Uncertain Case",
+    "The AI cannot confidently handle the request.",
+    "The inquiry is escalated to a human. The AI does not guess."
+   ]
+  ],
+  "page": 7
+ },
+ {
+  "type": "h3",
+  "text": "Responsible AI Rule",
+  "page": 7
+ },
+ {
+  "type": "p",
+  "text": "When confidence is low, the AI must not invent an answer, a price, or a promise. It tells the customer that a team member will help, and the case is escalated.",
+  "page": 7
+ },
+ {
+  "type": "h1",
+  "text": "11. Sample Customer Scenario",
+  "page": 7
+ },
+ {
+  "type": "p",
+  "text": "The following is a fictional demonstration for this document. It is not a real customer.",
+  "page": 7
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Customer Message",
+    "\"Hi, I own a clothing business and I want an e-commerce website. I need product listings, online payments, and order management. Can someone help me?\""
+   ],
+   [
+    "AI Understanding",
+    "Requested service: E-commerce website (Website Development)."
+   ],
+   [
+    "Extracted Requirements",
+    "Clothing business; e-commerce website; product listings; online payments; order management."
+   ],
+   [
+    "Missing Information",
+    "Number of products; preferred payment methods; delivery requirements; existing domain or hosting; additional features; contact details."
+   ],
+   [
+    "AI Follow-Up (Proposed)",
+    "1. Roughly how many products do you plan to list? 2. Which payment methods would you like to offer? 3. Do you need delivery or courier options in the store? 4. Do you already have a domain name or hosting? 5. Are there any other features you would like, such as discounts or customer accounts? 6. What is the best way for our team to contact you?"
+   ],
+   [
+    "Lead Status",
+    "Potential Lead"
+   ],
+   [
+    "Next Action",
+    "Prepare a structured lead record and notify the sales or project team for human follow-up. Exact pricing and project scope are discussed by the team."
+   ]
+  ],
+  "page": 7
+ },
+ {
+  "type": "h1",
+  "text": "12. Proposed Lead Record Structure",
+  "page": 8
+ },
+ {
+  "type": "p",
+  "text": "The table shows a proposed lead record. It is a design suggestion and is not implemented. Sample values come from the fictional scenario in Section 11.",
+  "page": 8
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Field",
+    "Sample Value (Fictional)",
+    "Field",
+    "Sample Value (Fictional)"
+   ],
+   [
+    "Lead Name",
+    "Not provided yet",
+    "Lead Status",
+    "Potential Lead"
+   ],
+   [
+    "Contact Information",
+    "Requested from customer",
+    "Priority",
+    "Set by rules or the team"
+   ],
+   [
+    "Business Type",
+    "Clothing business",
+    "Source",
+    "WhatsApp or website chat"
+   ],
+   [
+    "Requested Service",
+    "Website Development",
+    "Follow-Up Status",
+    "Pending"
+   ],
+   [
+    "Project Type",
+    "E-commerce website",
+    "Human Assigned",
+    "To be assigned"
+   ],
+   [
+    "Requirements",
+    "Product listings, online payments, order management",
+    "Notes",
+    "Awaiting answers to follow-up questions"
+   ],
+   [
+    "Missing Information",
+    "Product count, payment methods, delivery, hosting, extra features",
+    "",
+    ""
+   ]
+  ],
+  "page": 8
+ },
+ {
+  "type": "h1",
+  "text": "13. Tools & Technologies",
+  "page": 8
+ },
+ {
+  "type": "p",
+  "text": "The tools below are recommendations for a future implementation. None of them is connected or running at this stage.",
+  "page": 8
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Layer",
+    "Recommended Technology",
+    "Notes"
+   ],
+   [
+    "AI Layer",
+    "OpenAI / ChatGPT",
+    "Message understanding and extraction."
+   ],
+   [
+    "Automation Layer",
+    "n8n",
+    "Make or Zapier could be alternatives."
+   ],
+   [
+    "Communication Layer",
+    "WhatsApp Business / API or Website Chat",
+    "Proposed integration only."
+   ],
+   [
+    "Data Layer",
+    "Google Sheets or a CRM",
+    "Chosen with the client."
+   ],
+   [
+    "Notification Layer",
+    "Email, CRM, or team notification",
+    "Alerts the responsible team."
+   ]
+  ],
+  "page": 8
+ },
+ {
+  "type": "h1",
+  "text": "14. Role of Each Technology",
+  "page": 8
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Tool",
+    "Layer",
+    "Proposed Role"
+   ],
+   [
+    "OpenAI / ChatGPT",
+    "AI",
+    "Understand and process customer messages, extract requirements, classify inquiries, and assist in lead qualification."
+   ],
+   [
+    "n8n",
+    "Automation",
+    "Connect services and automate workflow steps in the correct order."
+   ],
+   [
+    "WhatsApp / API or Website Chat",
+    "Communication",
+    "Receive customer messages and send follow-up questions."
+   ],
+   [
+    "Google Sheets / CRM",
+    "Data",
+    "Store lead information and track lead status."
+   ],
+   [
+    "Email / CRM Notification",
+    "Notification",
+    "Alert the responsible team when a qualified lead needs attention."
+   ]
+  ],
+  "page": 8
+ },
+ {
+  "type": "h1",
+  "text": "15. Human Oversight & Escalation",
+  "page": 9
+ },
+ {
+  "type": "p",
+  "text": "Human judgment remains essential. The following cases should be passed to a team member:",
+  "page": 9
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Case",
+    "Why a Person Is Needed"
+   ],
+   [
+    "Exact project pricing",
+    "Prices depend on a full evaluation by the team."
+   ],
+   [
+    "Contracts and legal matters",
+    "These carry legal and financial responsibility."
+   ],
+   [
+    "Complex technical requirements",
+    "Experts must assess feasibility and design."
+   ],
+   [
+    "Negotiations",
+    "They need human judgment and relationship skills."
+   ],
+   [
+    "Complaints",
+    "Customers need empathy and a real solution."
+   ],
+   [
+    "Sensitive information",
+    "It requires careful, secure handling."
+   ],
+   [
+    "High-value projects",
+    "They deserve personal attention."
+   ],
+   [
+    "Low-confidence AI outputs",
+    "The AI should not guess."
+   ],
+   [
+    "Unusual customer requirements",
+    "They fall outside standard rules."
+   ]
+  ],
+  "page": 9
+ },
+ {
+  "type": "h3",
+  "text": "Principle",
+  "page": 9
+ },
+ {
+  "type": "h3",
+  "text": "AI assists the team; it does not replace professional human judgment.",
+  "page": 9
+ },
+ {
+  "type": "h1",
+  "text": "16. Business Benefits",
+  "page": 9
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Benefit",
+    "How the Proposed Automation Helps"
+   ],
+   [
+    "Saves employee time",
+    "Reduces repetitive handling of initial inquiries."
+   ],
+   [
+    "Faster response",
+    "Customers can receive quick initial assistance."
+   ],
+   [
+    "Better lead management",
+    "Potential leads are structured and organized."
+   ],
+   [
+    "Less manual data entry",
+    "Information can be extracted automatically."
+   ],
+   [
+    "Improved customer experience",
+    "Customers get a more organized first interaction."
+   ],
+   [
+    "Better follow-up",
+    "Qualified leads are forwarded to the right team."
+   ],
+   [
+    "Reduced human error",
+    "Structured collection reduces repetitive data-entry mistakes."
+   ],
+   [
+    "Scalability",
+    "The workflow can support a growing volume of inquiries."
+   ]
+  ],
+  "page": 9
+ },
+ {
+  "type": "p",
+  "text": "These are expected qualitative benefits of the design. No numerical improvements are claimed, because no measurements exist.",
+  "page": 9
+ },
+ {
+  "type": "h1",
+  "text": "17. Business Value",
+  "page": 9
+ },
+ {
+  "type": "p",
+  "text": "Why would a business pay for this automation? From a business owner's point of view, the value is in making the first stage of every project inquiry faster, more consistent, and less dependent on staff availability:",
+  "page": 9
+ },
+ {
+  "type": "li",
+  "text": "Time saved and productivity: staff stop typing the same clarifying questions and spend more time on project discussions.",
+  "page": 9
+ },
+ {
+  "type": "li",
+  "text": "Faster lead handling: inquiries are acknowledged and organized right away.",
+  "page": 9
+ },
+ {
+  "type": "li",
+  "text": "Better organization and less repetitive work: every lead is stored with the same fields, and data entry and forwarding are handled by the workflow.",
+  "page": 9
+ },
+ {
+  "type": "li",
+  "text": "Improved customer experience: customers receive clear, relevant questions instead of waiting.",
+  "page": 9
+ },
+ {
+  "type": "li",
+  "text": "Consistent processing and better follow-up: every inquiry follows the same rules, and qualified leads reach the team with context.",
+  "page": 9
+ },
+ {
+  "type": "h1",
+  "text": "18. Implementation Approach by Zayan Soft Tech",
+  "page": 10
+ },
+ {
+  "type": "p",
+  "text": "This is a proposed roadmap for how Zayan Soft Tech could deliver the solution as a client project. It has not been carried out for Star Developer or any other client.",
+  "page": 10
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Phase",
+    "Proposed Activities"
+   ],
+   [
+    "1. Business Discovery",
+    "Meet the client to understand the current inquiry process, channels, lead qualification, existing tools, data needs, and team responsibilities."
+   ],
+   [
+    "2. Solution Design",
+    "Define AI responsibilities, triggers, workflow logic, lead fields, escalation rules, and data storage."
+   ],
+   [
+    "3. Tool Selection",
+    "Choose suitable technologies, such as OpenAI, n8n, WhatsApp/API, Google Sheets or a CRM, and email notifications."
+   ],
+   [
+    "4. Workflow Development",
+    "Build the automation workflow."
+   ],
+   [
+    "5. AI Prompt & Logic Configuration",
+    "Configure AI instructions, classification, information extraction, follow-up questions, and escalation rules."
+   ],
+   [
+    "6. Integration",
+    "Connect the communication and data systems."
+   ],
+   [
+    "7. Testing",
+    "Test general inquiries, service inquiries, potential leads, missing information, complex questions, and human escalation."
+   ],
+   [
+    "8. Deployment",
+    "Launch after successful testing and client approval."
+   ],
+   [
+    "9. Monitoring & Improvement",
+    "Monitor performance and refine prompts and rules based on real usage."
+   ]
+  ],
+  "page": 10
+ },
+ {
+  "type": "h1",
+  "text": "19. Risks & Considerations",
+  "page": 10
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Risk or Consideration",
+    "Proposed Response"
+   ],
+   [
+    "AI may misunderstand unclear messages",
+    "Ask clarifying questions and escalate when confidence is low."
+   ],
+   [
+    "AI must not invent pricing or guarantees",
+    "Restrict answers to approved information and send pricing to the team."
+   ],
+   [
+    "Sensitive cases need review",
+    "Define clear human-review rules."
+   ],
+   [
+    "Customer data must be handled securely",
+    "Apply the practices in Section 20."
+   ],
+   [
+    "API and integration costs may apply",
+    "Estimate usage and plan the budget before building."
+   ],
+   [
+    "Workflow reliability must be tested",
+    "Test normal and unusual cases before launch."
+   ],
+   [
+    "Human escalation must always be available",
+    "Give customers an easy way to reach a person."
+   ],
+   [
+    "Business rules must be configured first",
+    "Set services, escalation rules, and lead criteria with the client."
+   ]
+  ],
+  "page": 10
+ },
+ {
+  "type": "h2",
+  "text": "19.1 Cost and Complexity",
+  "page": 10
+ },
+ {
+  "type": "p",
+  "text": "No prices are stated, because costs depend on the final design. Factors include the number of integrations, message volume, AI usage, CRM requirements, WhatsApp/API requirements, workflow complexity, hosting, monitoring, and maintenance.",
+  "page": 10
+ },
+ {
+  "type": "h1",
+  "text": "20. Data Privacy Considerations",
+  "page": 11
+ },
+ {
+  "type": "p",
+  "text": "A real implementation should consider the following. These are design considerations and not legal advice.",
+  "page": 11
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Consideration",
+    "Meaning"
+   ],
+   [
+    "Customer consent",
+    "Customers should know how their messages and details will be used."
+   ],
+   [
+    "Secure data storage",
+    "Lead data should be stored in protected systems."
+   ],
+   [
+    "Access control",
+    "Only authorized team members should see lead data."
+   ],
+   [
+    "Data minimization",
+    "Collect only the information that is needed."
+   ],
+   [
+    "Retention policies",
+    "Decide how long data is kept and when it is removed."
+   ],
+   [
+    "Secure API credentials",
+    "Keep keys and passwords out of shared files and messages."
+   ],
+   [
+    "Protection of contact information",
+    "Treat phone numbers and emails as sensitive."
+   ]
+  ],
+  "page": 11
+ },
+ {
+  "type": "h1",
+  "text": "21. Before vs Proposed Automation",
+  "page": 11
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "Process",
+    "Traditional Manual Approach",
+    "Proposed Automation"
+   ],
+   [
+    "Inquiry reading",
+    "Employee reads each message manually.",
+    "AI assists in understanding the message."
+   ],
+   [
+    "Requirement collection",
+    "Employee writes questions each time.",
+    "AI prepares follow-up questions."
+   ],
+   [
+    "Lead qualification",
+    "Manual judgment.",
+    "AI-assisted classification, reviewed by people."
+   ],
+   [
+    "Data entry",
+    "Details are typed in manually.",
+    "Structured record prepared automatically."
+   ],
+   [
+    "Team notification",
+    "Manual forwarding.",
+    "Automated notification."
+   ],
+   [
+    "Follow-up",
+    "Manual tracking.",
+    "Workflow support for follow-up status."
+   ]
+  ],
+  "page": 11
+ },
+ {
+  "type": "h2",
+  "text": "21.1 End-to-End Solution Summary",
+  "page": 11
+ },
+ {
+  "type": "p",
+  "text": "AI HUMAN",
+  "page": 11
+ },
+ {
+  "type": "p",
+  "text": "INPUT AUTOMATION RESULT",
+  "page": 11
+ },
+ {
+  "type": "p",
+  "text": "→ Understand, → → Review and Follow →",
+  "page": 11
+ },
+ {
+  "type": "p",
+  "text": "Customer Inquiry Store, Route, Notify Organized Lead",
+  "page": 11
+ },
+ {
+  "type": "p",
+  "text": "Extract, Classify Up",
+  "page": 11
+ },
+ {
+  "type": "p",
+  "text": "Result: an organized lead, a faster response, and a better business process.",
+  "page": 11
+ },
+ {
+  "type": "h1",
+  "text": "22. Conclusion",
+  "page": 11
+ },
+ {
+  "type": "p",
+  "text": "This document identified a realistic business-process problem for an IT and digital services company: handling early- stage project inquiries by hand. It analyzed the manual process, explained why it suits automation, and designed a practical solution that reads inquiries, collects missing requirements, qualifies leads, prepares structured records, and notifies the team.",
+  "page": 11
+ },
+ {
+  "type": "p",
+  "text": "The design is realistic because it keeps people in charge of pricing, contracts, negotiation, and sensitive cases, and because it recommends tools and an implementation roadmap without claiming that anything has been built. The value comes from solving a genuine business problem with a clear workflow, not from using AI for its own sake.",
+  "page": 11
+ },
+ {
+  "type": "h1",
+  "text": "23. Key Takeaways",
+  "page": 12
+ },
+ {
+  "type": "table",
+  "rows": [
+   [
+    "1",
+    "Start with the business problem: early-stage project inquiries are repetitive and time-consuming."
+   ],
+   [
+    "2",
+    "AI suits this process because customer messages are written in varied natural language."
+   ],
+   [
+    "3",
+    "The proposed solution reads, extracts, asks for missing details, classifies, records, and notifies."
+   ],
+   [
+    "4",
+    "Four categories (general, service, potential lead, complex) decide what happens next."
+   ],
+   [
+    "5",
+    "Humans stay in control of pricing, contracts, negotiation, and sensitive cases."
+   ],
+   [
+    "6",
+    "Recommended tools: OpenAI / ChatGPT, n8n, WhatsApp or website chat, Google Sheets or a CRM, and email or CRM notifications."
+   ],
+   [
+    "7",
+    "A structured lead record keeps every potential customer organized and easy to follow up."
+   ],
+   [
+    "8",
+    "Business value comes from time saved, faster lead handling, consistency, and better follow-up."
+   ],
+   [
+    "9",
+    "Risks and privacy need planning: accuracy, security, consent, and reliability testing."
+   ],
+   [
+    "10",
+    "This is a solution design, not a deployed system, and no real data or results are claimed."
+   ]
+  ],
+  "page": 12
+ }
+]
