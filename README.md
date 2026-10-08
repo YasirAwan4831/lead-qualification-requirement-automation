@@ -11,11 +11,13 @@
 
 </div>
 
+
 <p>
   <strong>Candidate:</strong> Muhammad Yasir &nbsp;•&nbsp;
   <strong>Selected business:</strong> Star Developer (sample business) &nbsp;•&nbsp;
   <strong>Status:</strong> Solution design
 </p>
+<br>
 
 <p>
   <img src="https://img.shields.io/badge/Next.js-14-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
@@ -24,6 +26,7 @@
   <img src="https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
   <img src="https://img.shields.io/badge/Node.js-18.17+-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
 </p>
+<br>
 
 <p>
   <img src="https://img.shields.io/badge/AI-Automation-4f5bd5?style=flat-square&logo=openai&logoColor=white" alt="AI Automation" />
@@ -35,6 +38,7 @@
   <img src="https://img.shields.io/badge/Accessibility-Semantic_HTML_%2B_ARIA-4f5bd5?style=flat-square" alt="Accessibility" />
   <img src="https://img.shields.io/badge/License-Not_specified-lightgrey?style=flat-square" alt="License not specified" />
 </p>
+<br>
 
 <h3>
   <a href="#-live-demo">🌐 Live Demo</a> •
@@ -111,18 +115,17 @@ This repository turns the original 12-page solution proposal into an interactive
 
 > 📄 Source proposal (PDF) → 🧩 structured content (JSON) → 🌐 searchable, responsive web app with an interactive workflow diagram
 
-**Good for:** internship review, portfolio presentation, recruiter and mentor walk-throughs, and discussion with potential clients.
+**Good for:** internship review, portfolio presentation, recruiter and mentor walk-throughs and discussion with potential clients.
 
 ---
 
 ## 🚀 Live Demo
 
-> 🔗 **No deployment URL is configured for this repository yet.**
-> After deploying (see [Build & Deployment](#-build--deployment)), add the real address here:
->
-> ```text
-> 🚀 View Live Application → https://YOUR-DEPLOYMENT-URL
-> ```
+> `
+> 🚀 View Live Application → https://ai-lead-qualification-requirement-auto.vercel.app/
+> `
+
+\<https://ai-lead-qualification-requirement-auto.vercel.app/\>
 
 ---
 
@@ -131,6 +134,7 @@ This repository turns the original 12-page solution proposal into an interactive
 | | |
 |---|---|
 | **Task** | Practical Task #03: Identify & Design an AI Automation Solution |
+  **Live Demo**  | [View Live Demo](<https://ai-lead-qualification-requirement-auto.vercel.app/>)
 | **Proposed solution** | AI Lead Qualification & Project Requirement Automation |
 | **Candidate** | Muhammad Yasir |
 | **Internship** | AI Automation Internship (domain: AI Automation) |
@@ -183,7 +187,7 @@ The aim is to demonstrate **AI automation consultant thinking**: start from a re
 
 **Selected problem:** AI-Powered Lead Qualification & Project Requirement Collection.
 
-An initial inquiry tells the team *what* the customer wants, but not the details needed to plan the work: number of products, payment methods, delivery needs, existing domain or hosting, and extra features. Collecting this by hand for every inquiry is repetitive, and the cost grows with the number of inquiries.
+An initial inquiry tells the team *what* the customer wants, but not the details needed to plan the work: number of products, payment methods, delivery needs, existing domain or hosting, and extra features. Collecting this by hand for every inquiry is repetitive and the cost grows with the number of inquiries.
 
 The proposal analyses a typical manual process:
 
@@ -318,7 +322,7 @@ The AI would sort each inquiry into **one of four categories**. The category dec
 | 🟥 **Complex / Uncertain Case** | The AI cannot confidently handle the request | Escalate to a human. The AI does not guess |
 
 > [!WARNING]
-> **Responsible AI rule:** when confidence is low, the AI must not invent an answer, a price or a promise. It tells the customer that a team member will help, and the case is escalated.
+> **Responsible AI rule:** when confidence is low, the AI must not invent an answer, a price or a promise. It tells the customer that a team member will help and the case is escalated.
 
 This is the **designed** decision logic. There is no live AI classifier in this repository.
 
@@ -432,7 +436,7 @@ Everything below exists in this repository's web application.
 ### 🔎 Search
 - **Client-side search** across the Task #03 content only, with no external API
 - Opens with the **`/`** key or **`Ctrl / Cmd + K`**
-- Results show the section, the matching subsection and a **highlighted snippet**, and link straight to it
+- Results show the section, the matching subsection and a **highlighted snippet** and link straight to it
 
 ### 🧩 Interactive visuals
 - **Interactive workflow diagram:** select any step to read what it does. It shows the YES / NO / COMPLEX CASE branches and **stacks vertically on mobile**
@@ -466,7 +470,7 @@ Everything below exists in this repository's web application.
 Sticky navbar with the monogram and project name, links to **Overview, Documentation, Workflow, Technologies, Benefits, Implementation and Conclusion**, the search button, the theme toggle and a hamburger menu on small screens.
 
 ### 🦶 Footer
-Four columns: **Project** (task, title, candidate), **Internship** (program, organization, tagline, social icons), **Navigation**, and **Previous projects**. Followed by a copyright line stating that this is a solution design proposal and not a deployed system.
+Four columns: **Project** (task, title, candidate), **Internship** (program, organization, tagline, social icons), **Navigation** and **Previous projects**. Followed by a copyright line stating that this is a solution design proposal and not a deployed system.
 
 ---
 
@@ -696,7 +700,7 @@ Being clear about scope is part of the design.
 
 ```bash
 # 1. Clone the repository
-git clone YOUR_REPOSITORY_URL
+git clone https://github.com/YasirAwan4831/lead-qualification-requirement-automation
 
 # 2. Open the project folder
 cd YOUR_PROJECT_DIRECTORY
